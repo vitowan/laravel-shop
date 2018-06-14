@@ -1,0 +1,26 @@
+<{layout name='index/pub'}>
+
+<div class="right_side nav_mana">
+	<div style="width:1200px;height:720px;margin:10px auto;">
+		<h3>栏目管理</h3>
+		<ul>
+			<li><span>ID</span><span>标题</span><span>url</span><span>简介</span><span>banner图</span><span>创建时间</span><span>操作</span></li>
+
+			<{volist name='result' id='value'}>
+				<li><span><{$value['id']}></span><span><{$value['title']}></span><span><{$value['url']}></span><span><{$value['intro']}></span><span><{$value['banner']}></span><span><{$value['times']}></span><span><a href=<{:url('index/nav_update')}>?id=<{$value['id']}>>更改</a> | <a href=<{:url('index/delete')}>?id=<{$value['id']}>>删除</a></span></li>				
+			<{/volist}>
+
+
+
+
+<!-- /jin_tp/public/static/uploads/banner-index.jpg
+../uploads/banner-index.jpg -->
+		
+		</ul>
+
+	</div>
+	
+
+
+
+</div>

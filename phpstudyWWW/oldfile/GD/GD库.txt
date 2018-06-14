@@ -1,0 +1,87 @@
+
+GD库   用来操作图像
+
+一、介绍
+
+PHP不仅仅局限于产生HTML的输出，还可以创建、操作多种不同格式的图像文件。
+
+图像文件：jpg,png,gif,bmp  PC
+
+
+可以使用GD函数库创建新图像或处理已有的图像。可以在PHP中使用图像函数来得到JPEG、GIF、PNG、SWF等格式，还支持一些FreeType、Type1等字体库
+
+二、图形图像的操作步骤
+
+图形图像操作步骤
+
+2-1 创建画布
+
+所有的图形图像都需要在一个背景图层上完成。画布就是这个背景图层。画布就是在内存中开辟了一块临时的内存区域，存储图像信息
+
+2-2 绘制图像
+
+在图层上使用各种图像函数设置图像颜色、填充色、文本以及画各种图形
+
+2-3 输出图像
+
+将图像以某种格式保存后输出到页面
+
+2-4 释放资源
+
+图像输出后，需要销毁画布，释放资源
+
+
+① 创建画布：
+
+在PHP中，使用GD库创建画布时，可以使用下面的两个函数：
+
+imagecreate()函数：通常只支持256色。
+
+imagecreatetruecolor()函数：可以创建一个真彩色图像，但是不能用于GIF格式的图像。一般来讲绘制图像以jpg/png格式为主
+
+resource imagecreate ( int x_size, int y_size )新建一个基于调色板的图像resource 
+
+参数：画布的宽度，画布的高度
+
+imagecreatetruecolor ( int x_size, int y_size )
+新建一个真彩色图像
+
+
+
+②设置颜色   三原色  0-255
+
+imagecolorallocate()
+
+int imagecolorallocate ( resource image, int red, int green, int blue )
+
+在GD库中只需要使用imagecolorallocate()函数即可达到设置颜色的效果。
+
+要在图形中使用多种色彩，只需要多次调用该函数即可实现
+
+
+③生成图像
+
+使用GD库提供的函数绘制完成图像以后，需要将其输出到浏览器或者保存到服务器上。
+
+使用下面的GD库函数，可以直接生成GIF、JPEG、PNG和WBMP等4种类型的图像：
+
+
+imagegif()函数：生成GIF格式的图像。
+
+imagejpeg()函数：生成JPEG格式的图像。
+
+imagepng()函数：生成PNG格式的图像。
+
+imagewbmp()函数：生成WBMP格式的图像。
+
+
+
+④释放资源
+
+imagedestroy()
+
+bool imagedestroy ( resource image )
+
+
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="txt" /><span id="sp"></span>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+$('#txt').blur(function () {
+    var user = $('#txt').val();
+    $.get('post_l.php',{"username":user},function (r) {
+        if (r == 1)
+        {
+            $('#sp').css('color','red');
+            $('#sp').html('用户名已经存在！！！');
+        }
+        else
+        {
+            $('#sp').css('color','green');
+            $('#sp').html('用户名可以使用！！！');
+        }
+    })
+})
+</script>

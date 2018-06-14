@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>OA登录</title>
+	<link rel="stylesheet" href="public.css">
+	<link rel="stylesheet" href="login.css">
+	<style>
+	body{
+		background:#E6E6FA;
+	}
+		form{
+			width:450px;
+			height:340px;
+			border:1px solid #000; 
+			margin:10% auto;
+			background:#4A708B;
+			color:#fff;
+			padding-top:10px;
+		}
+		form input{
+			margin-top:25px;
+			height:30px;
+			margin-left:20px;
+			width:200px;
+
+		}
+		span{
+			margin-left:40px;
+			display: inline-block;
+			width:80px;
+		}
+		div{
+			margin-left:20px;
+			display:inline-block;
+			margin-top:8px;
+		}
+		.btn{
+			width:100px;
+			display:block;
+			height:40px;
+			margin:20px auto;
+		}
+	</style>
+</head>
+<body>
+
+	
+	<form action="<{:url('index/dologin')}>" method='POST'>
+		<span>账&nbsp;&nbsp;&nbsp;号：</span><input type="text" name='username'><br>
+		<span>密&nbsp;&nbsp;&nbsp;码：</span><input type="password" name='password'><br>
+		<span>验证码：</span><input type="text" name='code'>
+		<span> </span><div><img src="<{:captcha_src()}>" alt="captcha" onclick="this.src='<{:captcha_src()}>'"/></div><br>
+		<input type="submit" value='登录' class='btn'>
+	</form>
+	
+
+
+
+
+</body>
+</html>

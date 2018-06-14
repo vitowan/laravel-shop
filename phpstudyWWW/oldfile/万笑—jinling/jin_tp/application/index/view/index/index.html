@@ -1,0 +1,108 @@
+<{include file="index/header"}>
+
+
+<div class="inner content">
+	<div class="content1 clearfix">
+
+		<div class='content1_left fl'>
+			<h2><a class="fl content1_left_a1" href="">集团新闻</a><a class="fr content_left_a2" href=""><img src="/jin_tp/public/static/img/jiantou.png" alt=""></a></h2>
+			<div class="clearfix">
+
+			
+				<ul class='fl'>
+						<{volist name='article' id='value'}>
+						<li><a href="<{:url('index/news')}>"><{$value->toArray()['title']}></a></li>
+
+						<{/volist}>
+						
+				</ul>
+			</div>
+		</div>
+
+		<div class="content1_right fr">
+			<div class="div_up">
+				<h2><a class="fl content1_right_a1" href="">通知公告</a><a class="fr content_right_a2" href=""><img src="/jin_tp/public/static/img/jiantou.png" alt=""></a></h2>
+				<ul>
+
+					<{volist name='notice' id='value'}>
+						<li><a href="<{:url('index/news')}>"><{$value->toArray()['title']}></a></li>
+
+						<{/volist}>
+
+				</ul>
+					
+			</div>
+			<div class="div_down">
+				<h2><a class="fl content1_right_a1" href="">销售信息</a><a class="fr content_right_a2" href=""><img src="/jin_tp/public/static/img/jiantou.png" alt=""></a></h2>
+				<ul>
+
+					<{volist name='sale' id='value'}>
+						<li><a href="<{:url('index/news')}>"><{$value->toArray()['title']}></a></li>
+
+						<{/volist}>
+				
+				
+				</ul>
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- 内容区下面的 -->
+
+	<div class="content1 clearfix">
+		<div class="content1_left fl">
+			<h2><a class="content1_left_a1" href="">集团概况</a><a class="content1_left_a2" href=""><img src="/jin_tp/public/static/img/jiantou.png" alt=""></a></h2>
+			<div class="text">
+					<{volist name='intro' id='value'}>
+						<{$value->toArray()['content']}>
+
+						<{/volist}>
+			</div>
+		</div>
+
+		<div class="content1_right fr">
+			<div class="div_up">
+				<h2><a class="fl content1_right_a1" href="">下属公司</a><a class="fr content_right_a2" href=""><img src="/jin_tp/public/static/img/jiantou.png" alt=""></a></h2>				
+			</div>
+			<div class="company_son">
+				<div class="fl">
+					<div>
+						<a href=""><img src="/jin_tp/public/static/img/jlhg.jpg" alt=""></a>
+					</div>
+					<div>金岭化工</div>
+				</div>
+				<div class="fr">
+					<div>
+						<a href=""><img src="/jin_tp/public/static/img/jlhx.jpg" alt=""></a>
+					</div>
+					<div>金岭化工</div>
+				</div>
+						<div class="fl">
+					<div>
+						<a href=""><img src="/jin_tp/public/static/img/jlhx.jpg" alt=""></a>
+					</div>
+					<div>金岭化工</div>
+				</div>
+						<div class="fr">
+					<div>
+						<a href=""><img src="/jin_tp/public/static/img/jlhx.jpg" alt=""></a>
+					</div>
+					<div>金岭化工</div>
+				</div>
+	
+
+			</div>
+		</div>
+	</div>
+
+
+</div> 
+
+
+
+
+
+
+<{include file="index/footer"}>

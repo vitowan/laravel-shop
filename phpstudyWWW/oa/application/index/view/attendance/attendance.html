@@ -1,0 +1,19 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>考勤&gt;&gt;</h3>
+
+<a class='attend' href="<{:url('attendance/attend')}>">
+	快点我打卡
+</a>
+<ul class='card'>
+	<li><span>id</span><span>打卡时间</span><span>打卡人</span><span>所在部门</span></li>
+	<{volist name='time' id='value'}>
+	<li><span><{$value['id']}></span><span><{$value['date']}></span><span><{$value['name']}></span><span><{$value['department']}></span></li>
+	<{/volist}>
+</ul>
+
+
+
+<{/block}>

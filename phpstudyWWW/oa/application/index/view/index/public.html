@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>主页</title>
+	<style>
+		*{margin:0;padding:0;}
+		body{
+			background:#EAEAEA;
+			font-family:'微软雅黑';
+		}
+		ul, ol, li{
+			list-style:none;
+		}
+		a{
+			text-decoration: none;
+			color:#000;
+		}
+		.header{
+			height:70px;
+			width:100%;
+			background:#708090;
+			color:#eee;
+			position:fixed;
+		}
+		.header span{
+			margin-left:50px;
+			display:inline-block;
+			height:40px;
+			line-height:40px;
+			width:80px;
+			padding-top:15px;
+		}
+		.header span a{
+			color:#eee;
+			text-decoration:none;
+		}
+		.left_side{
+			width:200px;
+			height:100%;
+			background:#424a5d;
+			float:left;
+			position:fixed;
+			margin-top:70px;
+
+		}
+		.left_side ul{
+			width:150px;
+			margin-left:15px;
+		}
+		.left_side ul li a{
+			color:#eee;
+			text-decoration:none;
+		}
+		.left_side ul li{
+			padding-top:30px;
+			margin-left:20px;
+		}
+		.right_side{
+			float:left;
+			margin-left:220px;
+
+			width:1350px;
+			border-top:1px solid #000;
+			height:1000px;
+		}
+		.right_side .right_inner{
+			margin-top:90px;
+			border:1px solid #ccc;
+			height:1000px;
+		}
+
+		.right_side .right_inner h3{
+			padding-left:20px;
+			padding:8px;
+			font-weight:normal;
+			background:#ddd;
+			color:#333;
+		}
+
+
+		/* 修改密码 */
+
+		.right_side .right_inner .form_pass{
+			width:500px;
+			height:320px;
+			border:1px solid #ccc;
+			margin:6% auto;
+			padding-top:60px;
+		}
+		.right_side .right_inner .form_pass span{
+			display: inline-block;
+			width:100px;
+			height:40px;
+			margin-left:40px;
+		}
+		.right_side .right_inner .form_pass .inp{
+			width:200px;
+			height:30px;
+			margin-left:30px;
+			margin-top:40px;
+		}
+		.right_side .right_inner .form_pass .btn{
+			display:block;
+			width:80px;
+			height:40px;
+			margin:40px auto;
+		}
+		.right_side .right_inner .form_pass i{
+			margin-left:10px;
+		}
+
+/* 个人信息页面 */
+		.right_side .right_inner .person {
+			margin-top:20px;
+			margin-left:20px;
+		}
+		.right_side .right_inner .person li{
+			margin-top:30px;
+			border-bottom:1px solid #ccc;
+			height:40px;
+			line-height:40px;
+			padding-left:30px;
+		}
+		.right_side .right_inner .person li span{
+			margin-right:50px;
+			display:inline-block;
+			width:350px;
+		}
+		/* 员工管理 */
+		.right_side .right_inner .user_add{
+			margin-left:10px;
+			margin:10px 10px;
+		}
+		.right_side .right_inner .user_add a{
+			display:inline-block;
+			color:#000;
+			width:120px;
+			height:35px;
+			border:1px solid #ccc;
+			line-height: 35px;
+			text-align:center;
+			border-radius:5px;
+			background:#79CDCD;
+		}
+		.right_side .right_inner table a{
+			border:1px solid #aaa;
+			display:inline-block;
+			width:45px;
+			height:30px;
+			line-height:30px;
+			background:#ccc;
+		}
+		.right_side .right_inner table a:hover{
+			border:1px solid #333;
+		}
+		/* 添加员工 */
+		.right_side .right_inner .form_user_add{
+			width:700px;
+			border:1px solid #ccc;
+			margin:5px auto;
+		}
+		.right_side .right_inner .form_user_add span{
+			display:inline-block;
+			width:100px;
+			margin-left:50px;
+		}
+		.right_side .right_inner .form_user_add input{
+			margin-left:120px;
+			margin-top:10px;
+			width:250px;
+			height:35px;
+		}
+		.right_side .right_inner .form_user_add select{
+			width:250px;
+			height:35px;
+			display:inline-block;
+			margin-left:120px;
+			margin-top:3px;
+		}
+		.right_side .right_inner .form_user_add .btn1{
+			margin-left:200px;
+			width:150px;
+			margin-bottom:20px;
+		}
+		/* 日报 */
+		
+		.right_side .right_inner .sum_w {
+			margin:5px 10px;
+		}
+		.right_side .right_inner .sum_w a{
+			display:inline-block;
+			width:120px;
+			height:40px;
+			background:#79CDCD;
+			border-radius:5px;
+			text-align:center;
+			line-height:40px;
+		}
+		.right_side .right_inner .day_summary li{
+			margin-left:20px;
+			padding-left:20px;
+			width:1250px;
+			border-bottom:1px solid #ccc;
+			margin-top:20px;
+		}
+
+		.right_side .right_inner .day_summary li span{
+			text-align:center;
+			display:inline-block;
+		}
+		.right_side .right_inner .day_summary li span:first-child{
+			width:250px;
+		}
+		.right_side .right_inner .day_summary li span:nth-child(2){
+			width:600px;
+		}
+		.right_side .right_inner .day_summary li span:nth-child(3){
+			width:300px;
+		}
+		.right_side .right_inner .day_summary li span a{
+			width:150px;
+			height:40px;
+			line-height:40px;
+			display:inline-block;
+			background:#ddd;
+		}
+
+
+
+
+		/* 添加日报 */
+		.right_side .right_inner .form_sum textarea{
+			margin:10px 20px;
+		}
+		.right_side .right_inner .form_sum input{
+			width:100px;
+			height:40px;
+			margin-left:300px;
+
+		}
+		/* 查看日报 */
+		.right_side .right_inner .summary_check li{
+			margin-left:20px;
+			padding-left:20px;
+			width:1250px;
+			border-bottom:1px solid #ccc;
+			margin-top:20px;
+		}
+		.right_side .right_inner .summary_check li span{
+			display:inline-block;
+			text-align:center;
+		}
+		.right_side .right_inner .summary_check li span:first-child{
+			width:200px;
+		}
+		.right_side .right_inner .summary_check li span:nth-child(2){
+			width:130px;
+		}
+		.right_side .right_inner .summary_check li span:nth-child(3){
+			width:130px;
+		}
+
+		.right_side .right_inner .summary_check li span:nth-child(4){
+			width:600px;
+		}
+		.right_side .right_inner .summary_check li span a{
+			background:#aaa;
+			display:block;
+			width:150px;
+			height:40px;
+			line-height:40px;
+			margin-bottom:3px;
+		}
+		/* 日报评论 */
+		.right_side .right_inner .daily_com{
+			width:1100px;
+			height:150px;
+			background:#ccc;
+			border-radius:20px;
+			margin:10px 10px;
+			padding-top:10px;
+		}
+		.right_side .right_inner .form_com textarea{
+			margin:10px;
+		}
+		.right_side .right_inner .form_com input{
+			width:100px;
+			height:40px;
+			margin-left:200px;
+		}
+		/* 领导评论详情 */
+		.right_side .right_inner .current_summary{
+			
+				width:1000px;
+				height:80px;
+				background:#fff;
+				margin-top:30px;
+				padding-left:20px;
+				margin-left:30px;
+			
+		}
+		.right_side .right_inner .leader_comments{
+			width:1000px;
+			height:500px;
+			background:#fff;
+			margin:10px 30px;
+			padding-left:30px;
+
+		}
+		.right_side .right_inner .leader_comments li{
+			border-bottom:1px solid #ccc;
+			padding-top:30px;
+			height:40px;
+			line-height: 40px
+		}
+		/* 考勤 */
+		.right_side .right_inner .attend{
+			display:block;
+			width:300px;
+			height:300px;
+			border:1px solid #f00;
+			background:#789;
+			border-radius:150px;
+			text-align:center;
+			line-height: 300px;
+			color:#fff;
+			font-size: 50px;
+			margin:0 auto;
+
+		}
+		.right_side .right_inner .attend:hover{
+			background:#678;
+		}
+
+		.right_side .right_inner .card li{
+			border-bottom:1px solid #ccc;
+		}
+		.right_side .right_inner .card li span{
+			display:inline-block;
+			width:240px;
+
+		}
+
+
+
+
+
+
+
+
+
+	</style>
+	<script src='/oa/public/static/js/jquery-1.8.2.min.js'></script>
+	<script src='/oa/public/static/js/index.js'></script>
+</head>
+<body>
+
+	
+
+	<div class='header'>
+		<span><a href="<{:url('home/index')}>">主页</a></span><span>我是logo</span><span>hi,<{$name}></span>  <span>信息提醒</span> <span><a href="<{:url('home/person_info')}>">个人信息</a></span> <span><a href="<{:url('home/pass_change')}>">修改密码</a></span> <span><a href="<{:url('home/rm_session')}>">退出登录</a></span>
+	</div>
+
+	<div class='left_side'>
+
+		<ul>
+			<{volist name='result' id='value'}>
+			<li><a href="/oa/public/index/<{$value['controller']}>/<{$value['method']}>"><{$value['name']}></a></li>
+			<{/volist}>
+		</ul>
+		
+	</div>
+
+	<div class='right_side'>
+		<div class='right_inner'>
+		<{block name='main'}> <{/block}>			
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>
+

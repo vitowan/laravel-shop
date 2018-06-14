@@ -1,0 +1,17 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>查看日报&gt;&gt;</h3>
+<ul class='summary_check'>
+	<li><span>日期</span><span>名字</span><span>部门</span><span>日志内容</span><span>评论</span></li>
+	<{volist name='daily' id='value'}>
+
+	<li><span><{$value['date']}></span><span><{$value['name']}></span><span><{$value['department']}></span><span><{$value['content']}></span><span><a href="<{:url('summary/summary_com')}>?id=<{$value['id']}>">点我查看详情和评论</a></span></li>
+
+	<{/volist}>
+</ul>
+
+
+
+<{/block}>

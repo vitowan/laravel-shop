@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="按钮" onclick="cli()">
+<div id="div"></div>
+</body>
+</html>
+<script>
+    function cli() {
+        //创建ajax对象
+        var xhr = null;
+        if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+        //打开ajax  open  第一个参数是提交的方式，第二个参数是提交的地址，第三个参数是提交的方式
+        xhr.open('get', 'demo.php?name=Eric', true);
+        //出发响应
+
+        //响应的时候需要一个过程0,1,2,3,4
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4)
+            {
+                var div = document.getElementById('div');
+                div.innerHTML = xhr.responseText;
+                //alert(xhr.responseText);
+            }
+
+        }
+
+        //发送出一个请求  get请求时   发送的请求时传递的参数是null
+        xhr.send(null);
+    }
+</script>

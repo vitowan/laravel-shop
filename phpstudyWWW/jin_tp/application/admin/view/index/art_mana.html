@@ -1,0 +1,29 @@
+<{layout name='index/pub'}>
+
+<div class="right_side art_mana">
+
+	<div style="width:1250px;height:720px;margin:10px auto;">
+		<h3>文章管理</h3>
+		<ul>
+			<li><span>ID</span><span>标题</span><span>简介</span><span>内容</span><span>图片</span><span>发布时间</span><span>作者</span><span>pid</span><span>操作</span></li>
+	<{volist name='result' id='value'}>
+
+		<li>
+			<span><{$value['id']}></span><span><{$value['title']}></span><span><{$value['intro']}></span><span><{$value['content']}></span><span><{$value['pic']}></span><span><{$value['date']}></span><span><{$value['author']}></span><span><{$value['pid']}></span><span><a href="<{:url('index/art_update')}>?id=<{$value['id']}>">修改</a> | <a href="<{:url('index/art_del')}>?id=<{$value['id']}>">删除</a></span>
+		</li>
+
+
+
+	<{/volist}>	
+
+
+
+		</ul>
+
+
+
+	</div>
+
+
+
+</div>

@@ -1,0 +1,19 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>领导评论详情&gt;&gt;</h3>
+<div class='current_summary'>
+	<{$comment}>
+</div>
+<ul class='leader_comments'>
+	<{volist name='arr' id='value'}>
+		<li><{$value['comment_name']}> : <{$value['com_content']}></li>
+	<{/volist}>
+
+</ul>
+
+
+
+
+<{/block}>

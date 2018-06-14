@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>金岭集团</title>
+	<link rel="stylesheet" href="/jin_tp/public/static/css/public.css">
+	<link rel="stylesheet" href="/jin_tp/public/static/css/index.css">
+	<link rel="stylesheet" href="/jin_tp/public/static/css/about.css">
+</head>
+<body>
+	<div class="inner header clearfix">
+		
+		
+		<div class="fl"><a href="#"><img src="/jin_tp/public/static/img/aboutLogo.png"></a></div>
+		<ul class=" clearfix fr"> 
+			<{volist name='result' id='value'}>
+				<{if condition="$value['id']==11"}>
+					<li><a href=<{:url('index/index')}>><{$value->toArray()['title']}></a></li>
+				<{elseif condition="$value['id']==9"}>
+					<li><a href=<{:url('index/news')}>><{$value->toArray()['title']}></a></li>				
+				<{else /}>
+						<li><a href="<{:url('index/about')}>?id=<{$value['id']}>"><{$value->toArray()['title']}></a></li>		
+				<{/if}>
+
+
+			<{/volist}>
+			<li><a href=""><img src="/jin_tp/public/static/img/english.png" alt=""></a></li>
+		</ul>
+	</div>
+
+	<div class="banner">
+	
+		<a href=""><img src="<{$photo}>"></a>
+	</div>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='jquery-1.8.2.min.js'></script>
+	<style>
+		#div{
+			width:600px;
+			height:400px;
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id='div'></div>
+</body>
+</html>
+<script>
+	$.ajax({
+		type:'get',
+		dataType:'xml',
+		cache:false,
+		url:'index.xml',
+		success:function(data){
+			//alert(data);
+			//alert($(data).find('student1'));
+			str="<table><tr><td>ID</td><td>姓名</td><td>年龄</td><td>性别</td></tr>";
+			//console.dir(data);//$(data)是个对象
+			$(data).find('student1').each(function(){//可以换成$(data).children().children().each(function(){，表示jq方法找后代元素，第一个子元素是root
+				var id=$(this).children('stu_id').html();
+				var name=$(this).children('stu_name').html();
+				var age=$(this).children('stu_age').html();
+				var sex=$(this).children('stu_sex').html();
+				//alert(id+name+age+sex);
+				str +="<tr><td>"+id+"</td><td>"+name+"</td><td>"+age+"</td><td>"+sex+"</td></tr>";
+				//$('#div').html(id+name+age+sex);
+
+			})
+			 str +="</table>";
+			$('#div').html(str);
+			
+		}
+	})
+
+</script>

@@ -1,0 +1,37 @@
+<{include file="index/header" /}>
+<div class="about inner clearfix">
+	<div class='fl'>
+		<h2>关于金岭</h2>
+		<ul>
+			<li><a href="">集团新闻</a></li>
+			<li><a href="">公告通知</a></li>
+
+		</ul>
+		<div><img src="/jin_tp/public/static/img/left_pic_news.jpg"></div>
+	</div>
+
+
+	<div class="fr">
+		<div class="bread_nav clearfix">
+			<div class="fl"><img src="/jin_tp/public/static/img/aboutLogo.png" alt=""></div>
+			<div class="fr">当前位置 : 首页 &gt; 新闻中心 <img src="/jin_tp/public/static/img/jiantou.png"></div>
+		</div>
+
+		<div>
+			
+			<ul>
+				<{volist name='arr' id='value'}>
+					<li><a href=""><{$value['title']}></a></li>
+				<{/volist}>
+				
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+
+<{include file="index/footer"}>

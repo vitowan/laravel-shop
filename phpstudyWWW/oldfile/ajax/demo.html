@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+	<input type="button" value='按钮' id='btn' >
+</body>
+</html>
+
+<script>
+var btn=document.getElementById('btn');
+btn.onclick=function test(){
+//创建ajax对象
+	var xhr=null;
+	if(window.ActiveXObject){// code for IE6, IE5
+		xhr=new ActiveXObject('microsoft');//括号里也可以写Microsoft.XMLHTTP
+	}else{// code for IE7+, Firefox, Chrome, Opera, Safari
+		xhr=new XMLHttpRequest();
+	}
+
+
+	
+	var name='wan';
+	var age='18';
+
+	//如需将请求发送到服务器，我们使用 XMLHttpRequest 对象的 open() 和 send() 方法：
+	//三个值分别是：get或者post方式;处理数据的文件位置(如果是get方式需要先传值，如下三种形式;true（异步）或 false（同步),不写默认true
+	//xhr.open('get','demo.php?name=wan&age=18',true);
+	xhr.open('get','demo.php?name='+name+'&age='+age,true);
+	//xhr.open('get','demo.php?name='+name,true);
+
+//readyState的状态改变事件，readyState存的是XMLHttpRequest相应状态(0,1,2,3,4),
+//0: 请求未初始化
+//1: 服务器连接已建立
+//2: 请求已接收
+//3: 请求处理中
+//4: 请求已完成，且响应已就绪
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			alert(xhr.responseText);//responseText是字符串形式的响应数据(open里面请求的地址页面中的所有的输出结果)
+		}
+	}
+
+	xhr.send();//跟上面的open()一体的，必写的，如果是get请求，括号里不用写，或者写null
+
+}
+
+
+</script>

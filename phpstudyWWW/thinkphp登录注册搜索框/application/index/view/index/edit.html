@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改页面</title>
+</head>
+<body>
+<form action={:url('index/doUpdate')} method='POST'>
+	标题：<input type="text" name='title' value={$result[0]['title']}><br><br>
+	简介：<input type="text" name='intro' value={$result[0]['intro']}><br><br>
+	内容：<input type="text" name='content' value={$result[0]['content']} ><br><br>
+	时间：<input type="text" name='date' value={$result[0]['date']}><br><br>
+	次数：<input type="text" name='times' value={$result[0]['times']}><br><br>
+	<input type="hidden" name='id' value={$result[0]['id']}>
+	<input type="submit" value='提交'>
+</form>
+
+
+</body>
+</html>

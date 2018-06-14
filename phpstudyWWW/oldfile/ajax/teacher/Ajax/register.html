@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="user" /><span id="sp"></span>
+<br /><br />
+<input type="password" id="pass" />
+<br /><br />
+<input id="btn" type="button" value="注册" onclick="register()" />
+</body>
+</html>
+<script>
+
+
+function register() {
+    var xhr = null;
+    if (window.ActiveXObject) {
+        xhr = new ActiveXObject('microsoft');
+    }
+    else {
+        xhr = new XMLHttpRequest();
+    }
+    var user = document.getElementById('user').value;
+    var pass = document.getElementById('pass').value;
+    var str = 'user='+user+'&pass='+pass;
+    xhr.open('post','register.php',true);
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            if (xhr.responseText > 0)
+            {
+                alert('注册成功！！！');
+            }
+            else
+            {
+                alert('注册失败！！！');
+            }
+        }
+    }
+    xhr.send(str);
+}
+</script>
+<script>
+    var sp = document.getElementById('sp');
+    var user = document.getElementById('user');
+    user.onblur = function () {
+        var xhr = null;
+        if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+        var str = 'user='+user.value;
+        xhr.open('post','check.php');
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200)
+            {
+                if (xhr.responseText > 0)
+                {
+                    sp.style.color = 'red';
+                    sp.innerHTML = '用户名已存在！！！';
+                    var btn = document.getElementById('btn');
+                    btn.onclick = function(){
+                        return false;
+                    }
+                }
+                else
+                {
+                    sp.style.color = 'green';
+                    sp.innerHTML = '用户名可以使用！！！';
+                }
+            }
+        }
+        xhr.send(str);
+    }
+</script>

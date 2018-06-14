@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>each演示</title>
+	<script src='jquery-1.8.2.min.js'></script>
+</head>
+<body>
+	<ul>
+		<li>我</li>
+		<li>你</li>
+		<li>让</li>
+		<li>它</li>
+	</ul>
+	
+</body>
+</html>
+<script>
+//在遍历DOM时，通常用$(selector).each(function(index,element))函数；
+
+//在遍历数据时，通常用$.each(dataresource,function(index,element))函数。
+
+/*	$('li').each(function(){
+		//alert($(this).html());
+	});
+
+
+
+
+	$a=['q','w','e'];
+	$a=Array('q','w','e');
+	$a=new Array('q','w','e');*/
+	$.each($a,function($k,$v){
+		alert($v);//q w e
+	});
+
+/*	$.each($a,function(){
+		alert(this);//q w e
+	});*/
+
+
+var arr2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+$.each(arr2, function(i, item){
+alert(item[0]);
+});
+//输出：1   4   7
+
+
+/*$.each([{name:"limeng",email:"xfjylimeng"},{name:"hehe",email:"xfjylimeng"}],function(i,n)
+{
+alert("索引:"+i+"对应值为："+n.name);
+});*/
+$json={name:"limeng",email:"xfjylimeng"}
+$.each($json,function(i,n)
+{
+alert($json[i]);
+});
+
+</script>

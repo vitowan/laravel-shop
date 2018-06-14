@@ -1,0 +1,68 @@
+{include file='public/header'}
+{block name='one'}			
+
+
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			商品管理
+			<small>
+				<i class="icon-double-angle-right"></i>
+				 商品分类
+				 <i class="icon-double-angle-right"></i>
+				 更改分类
+			</small>
+		</h1>
+	</div><!-- /.page-header -->
+
+
+<!-- 放中间内容的开始 -->
+	<form action="{:url('cate/doCateUpd')}" method="POST" class="form-horizontal" role="form" style="margin-top:30px">
+		<input type="hidden" name='id' value="{$res[0]['id']}">
+	<div class="form-group" style="margin-top:40px">
+		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 填写类名 </label>
+
+		<div class="col-sm-9">
+			<input type="text" id="form-field-1" value="{$res[0]['name']}" placeholder="填写类名" class="col-xs-10 col-sm-3 cate_name" name='name'/>
+		</div>
+	</div>
+
+	<div class="form-group" >
+		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 所属分类 </label>
+
+		<div class="col-sm-9">
+			<select name="pid"  id="cate_pid" id="" class="col-xs-3" >
+
+				<option value="0"  >顶级分类</option>
+			{volist name='arr' id='vo'}
+				<option value="{$vo.id}" {if($vo.id==$res[0]['pid'])} selected {/if}  >{$vo.str} {$vo.name}</option>
+			
+			{/volist}
+
+			</select>
+		</div>
+	</div>
+
+
+
+	<div class="clearfix form-actions" style="margin-top:80px">
+		<div class="col-md-offset-3 col-md-9">
+			
+				<input type="submit" id="cate_submit" value='添加' class="btn btn-info " type="button">
+
+			</button>
+
+			&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+
+				<input type="reset" value='重置' class="btn" type="reset">
+
+
+			</button>
+		</div>
+	</div>
+	</form>
+<!-- 放中间内容的结束 -->
+
+</div><!-- /.page-content -->
+ {/block}	
+ {include file='public/side'}

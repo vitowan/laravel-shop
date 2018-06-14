@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息主页面</title>
+</head>
+<body>
+	<br>
+<form action={:url('index/search')} method='POST'>
+	<input type="text" name='title' style="width:200px;height:30px"><input type="submit" value='搜索' style="height:30px"> <a href={:url('index/home')} style="margin-left:30px">我是主页</a>
+</form><br>
+
+	<a href={:url('index/add')}>添加添加添加添加添加添加添加添加添加添加添加添加</a><br><br>
+	<table border='1' width="900" cellspacing='0'>
+		<tr>
+			<th>ID</th>
+			<th>文章标题</th>
+			<th>简介</th>
+			<th>内容</th>
+			<th>时间</th>
+			<th>次数</th>
+			<th>操作</th>
+		</tr>
+
+	{volist name='article' id='value'}		
+		<tr align='center' style="height:40px">
+			<td>{$value.id}</td>
+			<td><a href={:url('index/content')}?id={$value.id}>{$value.title}</a></td>
+			<td>{$value.intro}</td>
+			<td>{$value.content}</td>
+			<td>{$value.date}</td>
+			<td>{$value.times}</td>
+			<td><a href={:url('index/delete')}?id={$value.id}>删除</a> | <a href={:url('index/update')}?id={$value.id}>修改</a></td>
+		</tr>
+	{/volist}
+	</table><br><br>
+
+</body>
+</html>

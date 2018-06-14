@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+//getJSON方法  专门用来取JSON的  传递两个参数   第一个参数是json文件的路径
+//第二个参数是一个回调函数  回调函数中传递一个参数  这个参数就是所对应的json文件中所有的内容（JSON对象）
+$.getJSON('index.json',function (data) {
+    //如何取出JSON文件中所有的数据
+    //需要对其遍历（就像数组一样）
+    //alert(data);
+    //使用each进行遍历JSON数据  第一个参数是JSON数据
+    //第二个参数是回调函数  传递两个参数  第一个是JSON文件中的键   第二个参数是JSON文件中的值
+    $.each(data,function (key,value) {
+        //一一对应打印出JSON文件中的值
+        var str = "姓名："+value.name+"   性别："+value.sex+"   年龄："+value.age+"<br />";
+        //文本输出
+        document.write(str);
+    })
+})
+</script>

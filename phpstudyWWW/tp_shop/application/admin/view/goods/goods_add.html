@@ -1,0 +1,202 @@
+{include file='public/header'}
+{block name='one'}	
+
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			商品管理
+			<small>
+				<i class="icon-double-angle-right"></i>
+				 产品管理
+				 <i class="icon-double-angle-right"></i>
+				 添加产品
+			</small>
+		</h1>
+	</div><!-- /.page-header -->
+	<div class='col-xs-12'>
+		<form class="form-horizontal" role="form" id='form_submit' action="{:url('goods/doGoodsAdd')}" method="POST" enctype= multipart/form-data>
+		  <div class="form-group">
+		    <label for="goods_name" class="col-sm-4 control-label">商品名称</label>
+		    <div class="col-sm-4">
+		      <input type="text" name="goods_name" class="form-control" id="goods_name" placeholder="请输入商品名称">
+		    </div>
+		  </div>
+
+		  	  <div class="form-group">
+		    <label for="goods_price" class="col-sm-4 control-label">商品价格</label>
+		    <div class="col-sm-4">
+		      <input type="text" name="goods_price" class="form-control" id="goods_price" placeholder="请输入价格">
+		    </div>
+		  </div>
+
+		  	  <div class="form-group">
+		    <label for="goods_status" class="col-sm-4 control-label">商品状态</label>
+		    <div class="col-sm-4">
+				<input name="goods_status" id="goods_status" class="ace ace-switch ace-switch-7" type="checkbox" value='1' checked>					
+				<span class="lbl"></span>
+
+		    </div>
+		  </div>
+
+		  	  <div class="form-group">
+		    <label for="goods_sales" class="col-sm-4 control-label">商品销量</label>
+		    <div class="col-sm-4">
+		      <input type="text" name="goods_sales" class="form-control" id="goods_sales" placeholder="商品销量">
+		    </div>
+		  </div>
+
+			<div class="form-group">
+		    <label for="goods_inventory" class="col-sm-4 control-label">商品库存</label>
+		    <div class="col-sm-4">
+		      <input type="text" name="goods_inventory" class="form-control" id="goods_inventory" placeholder="库存">
+		    </div>
+		  </div>
+
+			<div class="form-group">
+		    <label for="goods_pid" class="col-sm-4 control-label">分类选择</label>
+		    <div class="col-sm-4">
+				<select name="" id="cate_l1" class="col-sm-4 cate_select" data-next="cate_l2">
+					<option value="" >先选我</option>
+					{volist name="result" id="vo"}
+					<option value="{$vo.id}" >{$vo.name}</option>
+					{/volist}
+				</select>
+				<select name="" id="cate_l2" class="col-sm-4 cate_select" data-next="cate_l3">
+					<option value="">再选我</option>
+				</select>
+				<select name="goods_pid" id="cate_l3" class="col-sm-4">
+					<option value="">最后选我</option>
+				</select>
+		    </div>
+		  </div>	
+
+
+			<div class="form-group">
+			 	<label  class="col-sm-4 control-label">上传图片</label>
+			    <div class="col-md-3">
+			        <div class="thumbnail">
+			            <img id='img_upload' src="/tp_shop/uploads/upload.jpg"
+			                 alt="通用的占位符缩略图" style="width:300px;height:260px">
+			            <div class="caption " >
+			                <p>
+			                	<input type="file" id='file_btn' name="goods_thumb" style="display:none">
+			                    <a href="javascript:;" id='file_up' class="btn btn-primary" role="button" style="display:block">
+			                        选择图片上传
+			                    </a>
+			                    <a href="javascript:;" class="btn btn-default" role="button " style='display:none' id='file_change'>
+			                        替换
+			                    </a>
+			                </p>
+
+			            </div>
+			        </div>
+			    </div>
+		  </div>	
+
+			<div class="clearfix form-actions" >
+				<div class="col-md-offset-5 col-md-9">
+						<input type="submit" id="cate_submit_btn" value='确定' class="btn btn-info " type="button">
+					</button>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+						<input type="reset" value='重置' class="btn" type="reset">
+					</button>
+				</div>
+			</div>	  	   
+		</form>
+	</div>
+
+
+
+</div><!-- /.page-content -->
+
+{/block}	
+{include file='public/side'}
+
+<script>
+//三个下拉菜单
+	$('.cate_select').change(function(){
+
+		var next=$(this).attr('data-next');
+		if(next=='cate_l2'){
+			$('#cate_l2 option:not(:first)').remove();
+			$('#cate_l3 option:not(:first)').remove();		
+		}else if(next=='cate_l3'){
+			$('#cate_l3 option:not(:first)').remove();
+		}
+		$id=$(this).val();
+		if(!$id){
+			return false;
+		}
+		$.post(
+			"{:url('goods/cateSelect')}",
+			{'pid':$id},
+			function(r){
+				//alert(r);
+				//alert(r);
+				var optionhtml='';
+				//var arr=$.parseJSON(r);
+				//var arr=JSON.parse(r);
+				//var arr = eval('(' + r + ')');
+				$.each(r,function(k,v){
+					//alert(v.district);
+					optionhtml += '<option value="'+ v.id +'">'+v.name+'</option>';
+				});
+				$('#'+next).append(optionhtml);
+			}
+		);
+	});
+     
+
+</script>
+
+<script>
+	//enctype ="multipart/form-data"(以二进制格式上传)
+	//上传图片
+	$('#file_up').click(function(){
+		$('#file_btn').trigger('click');
+	});
+
+	//	替换图片时
+	$('#file_change').click(function(){
+		$('#file_btn').trigger('click');
+	});
+
+	//选择图片后
+	$('#file_btn').change(function(){
+		$('#file_up').css('display','none');//选择图片后隐藏上传按钮
+		$('#file_change').css('display','block');//选择图片后显示更改按钮
+		//var fileobj = $('#file_btn').get(0).files[0];//原生js获得传输的文件
+		var fileobj = document.getElementById('file_btn').files[0];//jq获得传输的文件
+		var maxSize = 1048576; 
+		console.log(fileobj);
+		//正则判断类型
+		if(!/image\/\w+/.test(fileobj.type)){
+			alert('文件必须是图片！');
+			return false;
+		}else if(fileobj.size>=maxSize){
+			alert('图片大小不能超过1M！');
+			return false;
+		}
+
+		var formData = new FormData();
+		formData.append('file_data',fileobj);
+		//formData.append('file_data1',1111);//如果穿的有字符串，后台用$_POST接收
+		//console.log(formData.get('file_data'));
+		$.ajax({
+			url:"{:url('goods/goods_thumb')}",
+			type:'POST',
+			data:formData,
+			async: false,
+			cache: false,
+			contentType: false, 
+			processData: false, 
+			success:function(r){
+				//alert(r);
+				//document.write(r);
+				$('#img_upload').attr('src',r);//更换显示的缩略图
+			}
+		});
+
+
+	});
+
+</script>

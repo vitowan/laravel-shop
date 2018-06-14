@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.about .fl h2{
+	width:260px;
+	height:50px;
+	line-height:50px;
+	background:#4f89c8;
+	text-align:center;
+	margin-top:30px;
+		color:#fff;
+}
+
+.about .fl ul li a{
+	display:block;
+	width:260px;
+	height:48px;
+	line-height:48px;
+	border:1px solid #ccc;
+	margin-top:15px;
+	text-align:center;
+	font-size:16px;
+
+}
+.about .fl ul li a:hover{
+	background:#ccc;
+}
+
+.about>.fr .bread_nav{
+	width:840px;
+	margin-top:28px;
+	border-bottom:1px solid #ccc;
+}
+.about .fl div{
+	margin-top:20px;
+}
+
+.about .fr .bread_nav .fr{
+	line-height:50px;
+}
+.about .fr .bread_nav .fr img{
+	vertical-align: middle;
+	margin-left:5px;
+}

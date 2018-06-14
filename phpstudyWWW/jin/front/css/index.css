@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+.content .content1{
+	margin-bottom:25px;
+}
+.content .content1 .content1_left h2 .content1_left_a1{
+	float:left;
+	margin-left:20px;
+}
+.content .content1 .content1_left h2 .content1_left_a2{
+	float:right;
+	margin-right:20px;
+}
+.content .content1 .content1_left{
+	width:800px;
+}
+.content .content1 .content1_left>div{
+	width:800px;
+}
+h2{
+
+	height:36px;
+	line-height:36px;
+	border-bottom:1px solid #333;
+	font-weight:normal;
+}
+.content .content1 .content1_left div .slide_img{
+	width:313px;
+	height:210px;
+	background:#ccc;
+	margin-top:10px;
+}
+.content .content1 .content1_left div ul{
+	margin-top:5px;
+}
+.content .content1 .content1_left div ul li{
+	background:url(../img/NewsList-style.png)  no-repeat left center;
+	margin-left:60px;
+	padding-left:32px;
+	line-height:26px;
+	width:380px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+.content .content1 .content1_right h2{
+	width:310px;
+}
+.content .content1 .content1_right h2 .content1_right_a1{
+	margin-left:20px;
+}
+.content .content1 .content1_right h2 .content1_right_a2{
+	margin-right:20px;
+}
+.content .content1 .content1_right ul li{
+	background:url(../img/NewsList-style.png)  no-repeat left center;
+	padding-left:32px;
+	line-height:26px;
+	width:270px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+.content .content1 .content1_right ul{
+	margin-top:5px;
+}
+.content .content1 .content1_right .div_down{
+	padding-top:15px;
+}
+
+/*子公司*/
+.content .content1 .content1_right .company_son{
+	width:310px;
+}
+.content .content1 .content1_right .company_son>div{
+	margin-top:20px;
+}

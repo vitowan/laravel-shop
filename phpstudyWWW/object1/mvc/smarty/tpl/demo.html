@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- 	{$c}
+{$c}
+ -->
+	<br>
+	<!-- 调用不带参数的变量修改器函数 -->
+	<{$var|func}>
+	<br>
+	<!-- 调用带参数的变量修改器函数 -->
+	<{$var|func:'#ff0':'7'}>
+	<br>
+
+<!-- 调用函数 -->
+	<{fund a='1' b='2' c='3' }>
+	<br>
+<!-- 调用块函数 -->
+	<{fune  f='11111'}>
+		66666
+	<{/fune}>
+	<br>
+
+<!-- smarty模板在html中定义变量的几种方式 -->
+<{assign var='m' value=11}>
+<{* <{$m}> *}>
+<{$m}>
+
+<{assign 'm' value=11}>
+<{$m}>
+
+<{$m=11}>
+<{$m}>
+	<br>
+<!-- smarty里面写if语句 -->
+<!-- 
+	Eq:等于号
+	Gt:大于号
+	Lt：小于号
+	Ne：不等于
+	Ge：大于等于
+	Le：小于等于	
+
+ -->
+<{$var=12}>
+<{if $var lt 10}>
+变量小于10
+<{else}>
+变量大于10
+<{/if}>
+
+<!-- smarty里面写for循环 -->
+<ul>
+<{for $var = 0 to 10}>
+<li><{$var}></li>
+<{/for}>
+</ul>
+
+<!-- smarty里面写foreach循环遍历 -->
+<{foreach $arr as $k=> $v}>
+	<{$v}>
+
+	<{$k}>
+
+<{/foreach}>
+
+</body>
+</html>

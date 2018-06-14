@@ -1,0 +1,13 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>个人日报 &gt;&gt; 编写日报 &gt;&gt; </h3>
+
+<form action="<{:url('summary/do_sum_add')}>" method='POST' class='form_sum'>
+	<textarea name="content" id="" cols="100" rows="20"></textarea><br>
+	<input type="submit" value='提交'>
+</form>
+
+
+<{/block}>

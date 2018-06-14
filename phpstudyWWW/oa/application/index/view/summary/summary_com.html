@@ -1,0 +1,17 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>日报评论 &gt;&gt;</h3>
+
+<div class='daily_com'>
+	<{$con}>
+</div>
+<form action="<{:url('summary/do_sum_com')}>" method='POST' class='form_com'>
+	<textarea name="text" id="" cols="100" rows="20" ></textarea><br>
+	<input type="hidden" name='id' value='<{$id}>'>
+	<input type="submit" value='提交'>
+</form>
+
+
+<{/block}>

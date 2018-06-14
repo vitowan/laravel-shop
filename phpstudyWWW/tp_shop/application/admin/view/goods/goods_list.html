@@ -1,0 +1,91 @@
+{include file='public/header'}
+{block name='one'}			
+
+
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			商品管理
+			<small>
+				<i class="icon-double-angle-right"></i>
+				 产品管理
+				<i class="icon-double-angle-right"></i>
+				产品列表
+			</small>
+		</h1>
+	</div><!-- /.page-header -->
+
+
+<!-- 放中间内容的 -->
+
+			<!-- PAGE CONTENT BEGINS -->
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover" >
+							<thead>
+								<tr>
+								
+									<th class="col-md-1"  style="text-align:center">ID</th>
+									<th class="col-md-1"  style="text-align:center">产品名称</th>
+									<th class="col-md-1"  style="text-align:center">产品价格</th>
+									<th class="col-md-1"  style="text-align:center">产品销量</th>
+									<th class="col-md-1"  style="text-align:center">产品库存</th>
+									<th class="col-md-1"  style="text-align:center">产品状态</th>
+									<th class="col-md-1"  style="text-align:center">产品图片</th>
+									<th class="col-md-2"  style="text-align:center">所属分类</th>
+
+									<th class="col-md-1"  style="text-align:center">
+										<i class="icon-time bigger-110 hidden-480"></i>
+										更新时间
+									</th>
+									
+									<th class="col-md-1" style="text-align:center">操作</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								{volist name='result' id='vo'}
+								<tr>	
+									<td  style="text-align:center;line-height:100px">{$vo.goods_id}</td>
+									<td  style="text-align:center; line-height:100px">{$vo.goods_name}</td>
+									<td  style="text-align:center; line-height:100px">{$vo.goods_price}</td>
+									<td  style="text-align:center; line-height:100px">{$vo.goods_sales}</td>
+									<td  style="text-align:center; line-height:100px">{$vo.goods_inventory}</td>
+									<td  style="text-align:center;line-height:100px">{$vo.goods_status}</td>
+									<td  style="text-align:center"><img src="{$vo.goods_thumb}" alt="" style="width:90px;height:80px"></td>
+									<td style="line-height:100px">{$vo.goods_pid}</td>
+									<td class="hidden-480"  style="text-align:center;">{$vo.goods_date}</td>
+								
+									<td style="vertical-align: middle">
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group" >
+											<a href="{:url('goods/goodsUpd',array('id'=>$vo.goods_id))}" class="btn btn-xs btn-info" >
+												<i class="icon-edit bigger-120"></i>
+											</a>
+
+											<a href="javascript:if(confirm('确认删除吗？'))location='{:url('goods/goodsDel',array('id'=>$vo.goods_id))}'" class="btn del btn-xs btn-danger" >
+												<i class="icon-trash bigger-120" ></i>
+											</a>
+
+										</div>
+									</td>
+								</tr>
+								{/volist}
+							
+								
+							</tbody>
+
+						</table>
+						{$html}
+					
+					
+					</div><!-- /.table-responsive -->
+				</div><!-- /span -->
+			</div><!-- /row -->
+			
+		</form>
+
+</div><!-- /.page-content -->
+
+ {/block}	
+ {include file='public/side'}

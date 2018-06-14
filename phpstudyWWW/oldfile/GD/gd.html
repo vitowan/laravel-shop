@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证码</title>
+	<style>
+		input{
+			margin-top:30px;
+		}
+		img{
+			vertical-align: middle;
+			margin-left:5px;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		账号：<input type="text"><br>
+		密码：<input type="text"><br>
+		验证码：<input type="text"><img src="gd_index.php" alt=""><br>
+		<input type="submit" value='提交'>
+	</form>
+</body>
+</html>
+<script>
+	var img=document.getElementsByTagName('img')[0];
+	img.onclick=function(){
+		this.src='gd_index.php?Math.random()';
+	}
+</script>

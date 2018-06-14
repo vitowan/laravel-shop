@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页·</title>
+	<style>
+		ul li{
+			float:left;
+			list-style: none;
+			margin-left:25px;
+		}
+		ul li input{
+			width:30px;
+			text-align: center;
+		}
+	</style>
+	<script src="/tp_solr/public/static/js/jquery-2.0.3.min.js"></script>
+</head>
+<body>
+	<input type="text" style='height:30px;margin-left:100px;width:300px;margin-bottom:30px;margin-top: 30px' id='search'><button id='btn'>搜索</button>
+	<table border='1' cellspacing='0' width="1000px">
+		<tr>
+			<th>id</th>
+			<th>图书编号</th>
+			<th>图书名称</th>
+			<th>出版社</th>
+			<th>出版时间</th>
+			<th>定价</th>
+			<th>册数</th>
+			<th>分类</th>
+			<th>详情</th>
+		</tr>
+		{volist name='result' id='vo'}
+		<tr>
+			<td>{$vo['id']}</td>
+			<td>{$vo['code'][0]}</td>
+			<td>{$vo['name'][0]}</td>
+			<td>{$vo['publish'][0]}</td>
+			<td>{$vo['date'][0]}</td>
+			<td>{$vo['price'][0]}</td>
+			<td>{$vo['num'][0]}</td>
+			<td>{$vo['cate'][0]}</td>
+			<td><a href="">详情</a></td>
+		</tr>
+		{/volist}
+	</table>
+	<ul>
+		<li><a href="">共 {$num} 页</a></li>
+		<li><a href="{:url('index/index',array('p'=>$p0))}">上一页</a></li>
+		<li>第 <input type="text" value="{$p}" id='inp'> 页 </li>
+		<li><a href="{:url('index/index',array('p'=>$p1))}"</a>下一页</li>
+	</ul> 
+
+</body>
+</html>
+<script>
+	$('#inp').blur(function(){
+		pp=$('#inp').val();
+		window.location.href= pp+'.html';
+
+	});
+
+	$('#btn').click(function(){
+		v=$('#search').val();
+		$.post(
+			"{:url('index/search')}",
+			{'v': v},
+			function(r){
+				if(r){
+					window.location.href="{:url('index/search')}";				
+				}
+
+			}
+
+		);		
+	});
+
+</script>

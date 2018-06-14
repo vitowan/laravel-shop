@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="q.php" method="post" onsubmit="return on()">
+    <input type="text" name="user" id="user"><span id="user_start"></span>
+    <br /><br />
+    <input type="password" name="pass" id="pass"><span id="pass_start"></span>
+    <br /><br />
+    <input type="password" name="password" id="repass"><span id="repass_start"></span>
+    <br /><br />
+    <input type="submit" id="sub">
+    <br /><br />
+</form>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+    var json={user:false,pass:false,repass:false};
+    $('#user').blur(function () {
+        var user = $('#user').val();
+        if (!user.match(/^\w{6,18}$/))
+        {
+            $('#user_start').css('color','red');
+            $('#user_start').html('用户名必须由6-18位数字字母下划线组成');
+            json.user = false;
+        }
+        else
+        {
+            $.post('check.php',{user:user},function (r) {
+                if (r > 0)
+                {
+                    $('#user_start').css('color','red');
+                    $('#user_start').html('用户名已存在');
+                    json.user = false;
+                }
+                else
+                {
+                    $('#user_start').css('color','green');
+                    $('#user_start').html('用户名可以使用');
+                    json.user = true;
+                }
+            })
+        }
+    })
+    $('#pass').blur(function () {
+        var pass = $('#pass').val();
+        if (!pass.match(/^\w{6,18}$/))
+        {
+            $('#pass_start').css('color','red');
+            $('#pass_start').html('密码必须由6-18位数字字母下划线组成');
+            json.pass = false;
+        }
+        else
+        {
+            $('#pass_start').css('color','green');
+            $('#pass_start').html('密码可以使用');
+            json.pass = true;
+        }
+    })
+    $('#repass').blur(function () {
+        var repass = $('#repass').val();
+        var pass = $('#pass').val()
+        if (repass !== pass)
+        {
+            $('#repass_start').css('color','red');
+            $('#repass_start').html('两次输入的密码不一致');
+            json.repass = false;
+        }
+        else
+        {
+            $('#repass_start').css('color','green');
+            $('#repass_start').html('密码确认无误');
+            json.repass = true;
+        }
+    })
+
+
+    function on() {
+        for (i in json)
+        {
+            if (json[i] === false)
+            {
+                return false;
+            }
+        }
+    }
+</script>

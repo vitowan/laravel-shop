@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action='index.php?c=user&m=insert' method='POST'>
+	    用户名： <input type='text' name='user' placeholder='填写用户名' id='user'><span id='span'></span><br><br>
+   		密码： <input type='text' name='password' placeholder='填写密码'><br><br>
+   		<input type='submit' value='注册'> &nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php?c=user&m=login">有账号点我登录</a>
+	</form>
+</body>
+</html>
+
+<script>
+	var user= document.getElementById('user');
+	user.onblur=function(){
+		var span=document.getElementById('span');
+		var value=user.value;
+		//alert(value);
+		var str='user_reg='+value;
+
+		if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+
+        xhr.open('post','ajax.php',true);
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        xhr.onreadystatechange=function(){
+        	if(xhr.readyState==4 && xhr.status==200){
+        		span.innerHTML=xhr.responseText;
+
+        	}
+        }
+
+        xhr.send(str);
+    }
+</script>

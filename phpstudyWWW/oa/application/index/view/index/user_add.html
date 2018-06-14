@@ -1,0 +1,41 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>员工管理&gt;&gt; 添加员工&gt;&gt;</h3>
+
+<form action="<{:url('user/do_user_add')}>" method='POST' class='form_user_add'>
+	<span>用户名</span>：<input type="text" name='username'><br>
+	<span>密码</span>：<input type="text" name='password'><br>
+	<span>姓名</span>：<input type="text" name='name'><br>
+	<span>性别</span>：<input type="text" name='sex' placeholder='填写woman或者man'><br>
+	<span>生日</span>：<input type="text" name='birth'><br>
+	<span>年龄</span>：<input type="text" name='age'><br>
+	<span>学历</span>：<input type="text" name='education'><br>
+	<span>毕业院校</span>：<input type="text" name='school'><br>
+	<span>电话</span>：<input type="text" name='tel'><br>
+	<span>邮箱</span>：<input type="text" name='email'><br>
+	<span>职位</span>：
+	<select name="did" id="">
+		<option value="1">董事长</option>
+		<option value="2">总经理</option>
+
+	</select><br>
+	<span>部门</span>：
+	<select name="pid" id="">
+		<option value="1">人事部</option>
+		<option value="2">市场部</option>
+		<option value="3">行政部</option>
+		<option value="4">技术部</option>
+
+	</select><br>
+	<input type="submit" value='提交' class='btn1'>
+
+
+	
+</form>
+
+
+
+
+<{/block}>

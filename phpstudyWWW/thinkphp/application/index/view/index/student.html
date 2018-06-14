@@ -1,0 +1,23 @@
+{include file="public/header"}
+	
+	<table border='1' width='100%' cellspacing='0'>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>password</th>
+			<th>sex</th>
+			<th>age</th>
+			<th>height</th>
+		</tr>
+		{foreach $arr as $v}
+			<tr>
+				<td>{$v.id}</td>
+				<td>{$v.name}</td>
+				<td>{$v.password}</td>
+				<td>{$v.sex}</td>
+				<td>{$v.age}</td>
+				<td>{$v.height}</td>
+			</tr>
+		{/foreach}
+	</table>
+{include file="../application/index/view/public/footer.html,public/header" /}

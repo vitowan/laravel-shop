@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<script src='jquery-1.8.2.min.js'></script>
+</head>
+<body>
+	<input type="text" id='user'><span id='span'></span><br>
+	<input type="password" id='pass'>
+	<input type="button" value='注册' id='reg'>
+</body>
+</html>
+<script>
+
+$(function(){
+	$('#reg').click(function(){
+		var user=$('#user').val();
+		var pass=$('#pass').val();
+/*		$.ajax({
+			type:'get',
+			url:'register.php',
+			//data:'user='+user+'&pass='+pass,
+			data:{user:user,pass:pass},
+			dataType:'JSON',
+			success:function(r){
+				if(r>0){
+					alert('注册成功');
+					location.href='login.html';
+				}else{
+					alert('注册失败');
+				}
+			}
+
+		});*/
+		//简单写法，$.post和$.get都可以，处理文件要用对应的方式接收，括号里三个参数：地址，数据和回调函数（对应到原生的readyState改变事件）
+		$.post(
+			'register.php',
+			//{user:user,pass:pass},
+			'user='+user+'&pass='+pass,
+			function(r){//r对应的是原生js里面的responseText(处理页面输出的值)
+				if(r>0){
+					alert('注册成功');
+					location.href='login.html';
+				}else{
+					alert('注册失败');
+				}				
+			}
+		);
+
+	});
+
+
+});
+/*	var reg=document.getElementById('reg');
+	reg.onclick=function(){
+		var user= document.getElementById('user').value;
+		var pass= document.getElementById('pass').value;
+		var str='user='+user+'&pass='+pass;
+
+		if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+
+        xhr.open('post','register.php',true);
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        xhr.onreadystatechange=function(){
+        	if(xhr.readyState==4 && xhr.status==200){
+        		if(xhr.responseText){
+        			alert('注册成功');
+        		}else{
+        			alert('注册失败');
+        		}
+
+        	}
+        }
+
+        xhr.send(str);
+
+
+
+	}
+*/
+	//失去焦点时判断账号是否重复
+/*	var user= document.getElementById('user');
+	user.onblur=function(){
+		var span=document.getElementById('span');
+		var value=user.value;
+		//alert(value);
+		var str='user_reg='+value;
+
+		if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+
+        xhr.open('post','register.php',true);
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        xhr.onreadystatechange=function(){
+        	if(xhr.readyState==4 && xhr.status==200){
+        		if(xhr.responseText>0){
+        			var reg=document.getElementById('reg');
+        			span.innerHTML='账号重复，请换个用户名';
+        			//reg.setAttribute('disabled','disabled');
+        			reg.disabled=true;
+        		}else{
+        			span.innerHTML='账号可注册';
+        			var reg=document.getElementById('reg');
+        			//reg.setAttribute('disabled',false);
+        			reg.disabled=false;
+        		}
+
+
+        	}
+        }
+
+        xhr.send(str);
+*/
+	
+	$('#user').blur(function(){
+		var user=$('#user').val();
+		$.ajax({
+			type:'post',
+			url:'register.php',
+			data:{'user_reg':user},
+			//dataType:'JSON',
+			success:function(r){
+				//alert(r);
+				if(r>0){
+					$('#span').html('账号重复，请换一个');
+					$('#reg').attr('disabled',true);
+				}else{
+					$('#span').html('账号可用');
+					$('#reg').attr('disabled',false);
+				}
+			}
+		});
+
+
+
+
+	});
+
+/*		$.ajax({
+			type:'get',
+			url:'register.php',
+			//data:'user='+user+'&pass='+pass,
+			data:{user:user,pass:pass},
+			dataType:'JSON',
+			success:function(r){
+				if(r>0){
+					alert('注册成功');
+					location.href='login.html';
+				}else{
+					alert('注册失败');
+				}
+			}
+
+		});*/
+</script>

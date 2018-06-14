@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市县联动</title>
+	<style>
+		div{
+			margin:20px 100px;
+		}
+	</style>
+	<script src='/select_city/public/static/js/jquery-1.8.2.min.js'></script>
+</head>
+<body>
+	<div>
+		<select name="" id="province" class='sltarea' data-next='city'>
+
+			<option value="">请选择</option>
+		{volist name='province' id='vo'}
+			<option value="{$vo.district_id}">{$vo.district}</option>
+		{/volist}
+
+		</select>
+
+		<select name="" id="city" class='sltarea' data-next='area'>
+			<option value="">请选择</option>
+		</select>
+
+		<select name="" id="area">
+			<option value="">请选择</option>
+		</select>
+
+	</div>
+
+</body>
+</html>
+<script>
+	//alert($);
+/*	$('#province').change(function(){
+		$id=$(this).val();
+		$.post(
+			"{:url('index/ajaxgetarea')}",
+			{'pid':$id},
+			function(r){
+				//alert(r);
+				$('#city option:not(:first)').remove();
+				$('#area option:not(:first)').remove();
+				var optionhtml='';
+				var arr=$.parseJSON(r);
+				$.each(arr,function(k,v){
+					//alert(v.district);
+					optionhtml += '<option value="'+ v.district_id +'">'+v.district+'</option>';
+				});
+				$('#city').append(optionhtml);
+			}
+
+		);
+
+
+	});
+
+	$('#city').change(function(){
+
+		$id=$(this).val();
+		$.post(
+			"{:url('index/ajaxgetarea')}",
+			{'pid':$id},
+			function(r){
+				//alert(r);
+				$('#area option:not(:first)').remove();
+				var optionhtml='';
+				var arr=$.parseJSON(r);
+				$.each(arr,function(k,v){
+					//alert(v.district);
+					optionhtml += '<option value="'+ v.district_id +'">'+v.district+'</option>';
+				});
+				$('#area').append(optionhtml);
+			}
+
+		);
+
+
+	});
+*/
+
+	$('.sltarea').change(function(){
+
+		var next=$(this).attr('data-next');
+		if(next=='city'){
+			$('#city option:not(:first)').remove();
+			$('#area option:not(:first)').remove();		
+		}else if(next=='area'){
+			$('#area option:not(:first)').remove();
+		}
+		$id=$(this).val();
+		if(!$id){
+			return false;
+		}
+		$.post(
+			"{:url('index/ajaxgetarea')}",
+			{'pid':$id},
+			function(r){
+				//alert(r);
+				//alert(r);
+				var optionhtml='';
+				//var arr=$.parseJSON(r);
+				//var arr=JSON.parse(r);
+				//var arr = eval('(' + r + ')');
+				$.each(r,function(k,v){
+					//alert(v.district);
+					optionhtml += '<option value="'+ v.district_id +'">'+v.district+'</option>';
+				});
+				$('#'+next).append(optionhtml);
+			}
+
+		);
+
+
+	});
+</script>

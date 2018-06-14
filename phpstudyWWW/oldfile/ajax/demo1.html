@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id='inp' value=''>
+	<input type="password" id='pass' value=''> 
+	<input type="button" id='btn' value='提交'>
+</body>
+</html>
+
+<script>
+
+	var btn=document.getElementById('btn');
+	var txt=document.getElementById('inp');
+	var pass=document.getElementById('pass');
+
+	btn.onclick=function(){
+	var str='t='+txt.value+'&p='+pass.value;//也可以放到下面其它位置，send()方法上面
+
+		//var xhr=null;
+		if(window.ActiveXObject){
+			xhr=new ActiveXObject('microsoft');
+		}else{
+			xhr=new XMLHttpRequest();
+		}
+		xhr.open('post','demo1.php',true);
+
+//上面是post方式，必须引入post的头文件 因为是HTML 表单那样 POST 数据，请使用 setRequestHeader() 来添加 HTTP 头。然后在 send() 方法中规定您希望发送的数据：
+//setRequestHeader(header,value);前者是头名称，后者是头的值
+		xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status == 200){//后者状态200表示ok准备就绪
+				alert(xhr.responseText);
+
+			}
+		}
+
+		xhr.send(str);//括号里也可以直接传值，例如"name=wan&sex=man",跟GET的url后面问号后面的值一样
+	}
+</script>

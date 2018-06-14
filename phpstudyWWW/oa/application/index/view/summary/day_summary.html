@@ -1,0 +1,17 @@
+<{extend name='index/public' /}>
+
+<{block name='main' /}> 
+
+<h3>个人日报&gt;&gt;</h3>
+
+<div class='sum_w'><a href="<{:url('summary/sum_write')}>">写日报</a></div>
+<ul class='day_summary'>
+	<li><span>日期</span><span>内容</span><span>评语</span></li>
+	<{volist name='sum' id='value'}>
+	<li><span><{$value['date']}></span><span><{$value['content']}></span><span><a href="<{:url('summary/leader_comments')}>?id=<{$value['id']}>">点我查看领导评论</a></span></li>
+	<{/volist}>
+
+</ul>
+
+
+<{/block}>

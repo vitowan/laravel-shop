@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+	<student1>
+		<stu_id>1</stu_id>
+		<stu_name>wan</stu_name>
+		<stu_age>19</stu_age>
+		<stu_sex>man</stu_sex>
+	</student1>
+
+	<student1>
+		<stu_id>2</stu_id>
+		<stu_name>wang</stu_name>
+		<stu_age>23</stu_age>
+		<stu_sex>woman</stu_sex>
+	</student1>
+</root>

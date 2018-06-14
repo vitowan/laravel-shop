@@ -1,0 +1,116 @@
+@charset "utf-8";
+*{margin:0; padding:0;} 
+body, h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, input{
+	margin:0;/*去掉自带外间距*/
+	padding:0;/*去掉自带内填充*/
+}
+
+body{
+	font-family:'微软雅黑';
+	font-size:14px;
+}
+
+
+
+ul li{
+	list-style:none;
+}
+
+a{
+	text-decoration:none;
+	color:#000;
+}
+
+.fl{
+	float:left;
+}
+
+.fr{
+	float:right;
+}
+
+.clearfix{
+	zoom:1;/*IE浏览器清浮动*/
+}
+
+.clearfix:after{
+	content:'';/*添加一个空内容*/
+	display:block;/*转块*/
+	clear:both;/*清浮动*/
+}
+
+.inner{
+	width:1150px;
+	margin:0 auto;
+}
+
+/* 头部 */
+.header{
+	height:80px;
+	padding-top:20px;
+}
+
+.header ul{
+	margin-right:10px;
+}
+
+.header ul li{
+	float:left;
+
+}
+
+.header ul li a{
+	display:inline-block;
+	height:80px;
+	width:85px;
+	font-size:16px;
+	text-align:center;
+	line-height:80px;
+}
+
+.header ul li a:hover{
+	background:#1eaee8;
+	color:#fff;
+}
+
+/*banner区*/
+.banner{
+	height:315px;
+	background:#ddd;
+	border-bottom:1px solid #a0a0a0;
+}
+
+.banner a img{
+	height:280px;
+	width:100%;
+}
+
+/*footer区*/
+.footer{
+	background:#086291;
+	padding-top:20px;
+}
+
+.footer .fl>li{
+	float:left;
+	margin-right:35px;
+	
+	padding-bottom:25px;
+}
+.footer .fl>li>a{
+	font-size:16px;
+	line-height:30px;
+
+}
+.footer .fl li ol li a{
+	font-size:12px;
+	line-height:24px;
+}
+.footer a{
+	color:#fff;
+}
+.footer .fr li{
+	color:#fff;
+	font-size:12px;
+	line-height:24px;
+}

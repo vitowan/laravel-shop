@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+    用户名： <input type='text' name='user' placeholder='填写用户名'><br><br>
+	密码： <input type='text' name='password' placeholder='填写密码'><br><br>
+	<input type='submit' value='登录' onclick="log()">
+
+</body>
+</html>
+<script>
+    function log() {
+        var txt = document.getElementById('txt').value;
+        var pass = document.getElementById('pass').value;
+        var strPoat = 'user='+txt+'&password='+pass;
+        //alert(strPoat);
+        var xhr = null;
+        if (window.ActiveXObject) {
+            xhr = new ActiveXObject('microsoft');
+        }
+        else {
+            xhr = new XMLHttpRequest();
+        }
+
+        xhr.open('post','index.php?c=user&m=login1');
+
+        //get请求中直接发送就可以了   但是post请求中  需要一个头文件
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+        xhr.onreadystatechange = function()
+        {
+            if (xhr.readyState == 4 && xhr.status == 200)
+            {
+                alert(xhr.responseText);
+
+            }
+        }
+
+        //发送一个ajax请求  传入的是表单中的值
+        xhr.send(strPoat);
+    }
+
+    
+</script>
