@@ -1,0 +1,14 @@
+模板继承
+
+继承 @extends('目录.文件名')
+
+占位符
+	1.@yield('名字')
+	2.@section('名字')
+
+		@show
+使用
+	1.@section('名字','值')
+	2.@section('名字')
+			值
+		@endsection
